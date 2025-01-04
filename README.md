@@ -5,7 +5,7 @@ Hi Team, here is the application built with Nuxt 3, Vue 3, and TypeScript. This 
 ## 🛠 Tech Stack
 
 ### Core Technologies
-- **Framework**: Nuxt 3.15.0
+- **Framework**: Nuxt 3.15.0 (front and backends [built-in nitro server])
 - **UI Library**: Vue 3 (latest)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS with Forms plugin
@@ -14,7 +14,7 @@ Hi Team, here is the application built with Nuxt 3, Vue 3, and TypeScript. This 
 
 ### Development Tools
 - **Package Manager**: pnpm 9.15.1
-- **Testing Framework**: 
+- **Testing Frameworks**: 
   - Vitest 1.3.1 (Unit/Integration)
   - Playwright 1.49.1 (E2E)
 - **Test Utilities**:
