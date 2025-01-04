@@ -10,6 +10,7 @@ Hi Team, here is the application built with Nuxt 3, Vue 3, and TypeScript. This 
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS with Forms plugin
 - **Date Picker**: @vuepic/vue-datepicker 10.0.0
+- **Node.js**: v20.18.1 (required)
 
 ### Development Tools
 - **Package Manager**: pnpm 9.15.1
