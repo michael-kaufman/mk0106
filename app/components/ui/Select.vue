@@ -1,45 +1,37 @@
 <template>
-  <Listbox v-model="props.modelValue">
-    <ListboxLabel v-if="props.label" class="block text-sm font-medium text-gray-700">{{ props.label }}</ListboxLabel>
-    <div class="relative mt-1">
-      <!-- ... ListboxButton stays the same ... -->
-      <transition
-        leave-active-class="transition ease-in duration-100"
-        leave-from-class="opacity-100"
-        leave-to-class="opacity-0"
-      >
-        <ListboxOptions class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-          <SelectOption
-            v-for="option in props.options"
-            :key="option.value"
-            :option="option"
-          />
-        </ListboxOptions>
-      </transition>
+  <div class="relative">
+    <select
+      :value="modelValue"
+      @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
+      class="select-tool w-full rounded-md border-2 border-gray-400 shadow-sm focus:border-primary-500 focus:ring-primary-500 p-3 bg-gray-50 text-gray-800 text-base font-medium appearance-none cursor-pointer hover:bg-white focus:bg-white transition-colors pr-10"
+      v-bind="$attrs"
+    >
+      <slot></slot>
+    </select>
+    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-600">
+      <svg class="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+      </svg>
     </div>
-  </Listbox>
-</template> 
+  </div>
+</template>
 
 <script setup lang="ts">
-import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue'
-import { ChevronUpDownIcon } from '@heroicons/vue/20/solid'
-import SelectOption from '~/components/ui/SelectOption.vue'
-
-const props = defineProps<{
+defineProps<{
   modelValue: string
-  options: Array<{ value: string; label: string }>
-  label?: string
-  error?: string
 }>()
 
-const emit = defineEmits<{
+defineEmits<{
   'update:modelValue': [value: string]
 }>()
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Select'
+<style scoped>
+.select-tool {
+  font-family: Arial, sans-serif; 
+  font-size: 18px; 
+  color: #333; 
+  font-weight: 500;
+  background-color: #faf7f7e5; 
 }
-</script>
-
+</style>
