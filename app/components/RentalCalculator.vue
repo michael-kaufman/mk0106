@@ -1,31 +1,24 @@
 <template>
   <div class="min-h-[500px] p-4">
     <ErrorMessage v-if="error" :errors="[error.message]" />
-    <div v-else-if="!showResults" class="max-w-2xl mx-auto">
+    <div class="max-w-2xl mx-auto">
       <RentalForm
         :loading="loading"
         @submit="handleSubmit"
-      />
-    </div>
-    <div v-else>
-      <RentalResults
-        :result="result"
-        @reset="handleReset"
       />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import type { RentalResult } from '~/types/rental'
 import { createError, type ErrorOptions } from '~/utils/errors'
 import ErrorMessage from '~/components/ui/ErrorMessage.vue'
 
-const result = ref<RentalResult | null>(null)
+const result = useState<RentalResult | null>('rentalResult', () => null)
+const loading = useState<boolean>('loading', () => false)
 const error = ref<ErrorOptions | null>(null)
-const loading = ref(false)
-const showResults = computed(() => result.value !== null)
 
 const handleSubmit = async (formData: {
   toolCode: string
@@ -41,6 +34,7 @@ const handleSubmit = async (formData: {
       method: 'POST',
       body: formData
     })
+    navigateTo('/results')
   } catch (err) {
     error.value = {
       statusCode: 500,

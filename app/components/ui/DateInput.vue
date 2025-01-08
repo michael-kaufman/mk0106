@@ -1,7 +1,3 @@
-/**
- * DateInput component
- * Provides a date picker with consistent styling
- */
 <template>
   <div>
     <Label v-if="label">{{ label }}</Label>
@@ -44,12 +40,9 @@ const emit = defineEmits<{
 
 const handleDateChange = (date: Date | null) => {
   // Ensure we have a valid date object
-  console.log('DateInput received:', date)
   if (date && !(date instanceof Date)) {
-    console.log('Converting to Date object:', date)
     date = new Date(date)
   }
-  console.log('Emitting date:', date)
   emit('update:modelValue', date)
 }
 </script> 

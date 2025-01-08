@@ -4,7 +4,7 @@ import { createError } from '~/utils/errors'
 import { validateRentalForm } from '~/utils/validation'
 
 export const useRentalCalculator = () => {
-    const { data: toolsData } = useAsyncData<{ tools: Record<string, Tool> }>('tools', () => $fetch('/api/tools'))
+    const { data: toolsData } = useAsyncData('tools', () => $fetch<{ tools: Record<string, Tool> }>('/api/tools'))
 
     const formatCurrency = (amount: number): string => {
         return amount.toLocaleString('en-US', {

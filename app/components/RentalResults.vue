@@ -68,6 +68,14 @@
         </dl>
       </div>
     </div>
+    <div class="text-center mt-8">
+      <button 
+        @click="$emit('reset')" 
+        class="text-blue-600 hover:text-blue-800 font-medium px-4 py-2 border border-blue-600 rounded-md hover:bg-blue-50 transition-colors"
+      >
+        Back to Calculator
+      </button>
+    </div>
   </div>
 </template>
 
@@ -80,4 +88,8 @@ const props = withDefaults(defineProps<{
 }>(), {
   result: null
 })
+
+defineEmits<{
+  reset: []
+}>()
 </script> 
