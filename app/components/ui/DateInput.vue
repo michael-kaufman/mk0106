@@ -12,7 +12,6 @@
       :format="(date) => date ? formatPreviewDate(date) : ''"
       :name="name"
       :placeholder="placeholder"
-      :min-date="minDate"
       input-className="w-full rounded-lg border-2 border-gray-400 shadow-sm focus:border-primary-500 focus:ring-primary-500 p-3 bg-gray-50 text-gray-800 text-base font-medium hover:bg-white focus:bg-white transition-colors"
     />
   </div>

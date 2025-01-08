@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-multiple-empty-lines
+
 <template>
   <div class="relative">
     <input

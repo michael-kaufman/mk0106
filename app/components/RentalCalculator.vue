@@ -17,7 +17,7 @@ import { createError, type ErrorOptions } from '~/utils/errors'
 import ErrorMessage from '~/components/ui/ErrorMessage.vue'
 
 const result = useState<RentalResult | null>('rentalResult', () => null)
-const loading = useState<boolean>('loading', () => false)
+const loading = ref(false)
 const error = ref<ErrorOptions | null>(null)
 
 const handleSubmit = async (formData: {

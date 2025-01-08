@@ -2,7 +2,10 @@
   <button
     :type="type"
     :disabled="disabled"
-    class="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-base font-semibold"
+    :class="[
+      'bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-base font-semibold',
+      $attrs.class
+    ]"
     v-bind="$attrs"
   >
     <slot></slot>

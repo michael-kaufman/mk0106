@@ -5,11 +5,13 @@
       <div class="space-y-6 pb-[75px]">
         <!-- Tool Selection -->
         <div>
+          <Label>Select a tool</Label>
           <Select
             v-model="state.selectedTool"
             name="toolCode"
             :class="{ 'border-red-500': state.errors.find((e: string) => e.includes('tool')) }"
           >
+            <option value=""></option>
             <option value="" disabled class="text-gray-500">Select a tool...</option>
             <option 
               v-for="tool in tools" 
@@ -120,6 +122,8 @@ const state = ref<FormState>({
     errors: []
 })
 
+const selectedIndex = ref<number>()
+
 // Get tools from API
 const pending = ref(true)
 const toolsData = ref<ToolsResponse>()
@@ -151,11 +155,7 @@ const emit = defineEmits<{
 
 function handleSubmit() {
     state.value.errors = []
-    console.log('Form state:', {
-        checkoutDate: state.value.checkoutDate,
-        returnDate: state.value.returnDate
-    })
-
+    
     const validationErrors = validateRentalForm({
         toolCode: state.value.selectedTool,
         checkoutDate: state.value.checkoutDate,
@@ -199,5 +199,6 @@ function handleReset() {
     discountPercent: 0,
     errors: []
   }
+  selectedIndex.value = 0
 }
 </script>

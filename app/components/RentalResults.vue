@@ -68,20 +68,20 @@
         </dl>
       </div>
     </div>
-    <div class="text-center mt-8">
-      <button 
-        @click="$emit('reset')" 
-        class="text-blue-600 hover:text-blue-800 font-medium px-4 py-2 border border-blue-600 rounded-md hover:bg-blue-50 transition-colors"
-      >
-        Back to Calculator
-      </button>
-    </div>
   </div>
+  <Button 
+    @click="handleClick"
+    variant="primary"
+    size="md"
+    class="w-32 mx-auto block mt-4"
+  >Back</Button>
 </template>
 
 <script setup lang="ts">
 import type { RentalResult } from '~/types/rental'
 import { formatDate } from '~/utils/dates'
+import { useRouter } from 'vue-router'
+import Button from '~/components/ui/Button.vue'
 
 const props = withDefaults(defineProps<{
   result?: RentalResult | null
@@ -89,7 +89,20 @@ const props = withDefaults(defineProps<{
   result: null
 })
 
-defineEmits<{
-  reset: []
-}>()
+const router = useRouter()
+const handleClick = () => {
+  router.back()
+}
 </script> 
+
+<style scoped>
+.result-button {
+  margin-top: 20px;
+  margin-left: 20px;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+</style>
