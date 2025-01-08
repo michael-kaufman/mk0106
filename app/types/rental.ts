@@ -40,3 +40,10 @@ export interface RentalResult extends Tool {
     returnDate: string;
     discountPercent: number;
 }
+
+export interface RentalFormData {
+    toolCode: string
+    checkoutDate: Date | null
+    returnDate: Date | null
+    discountPercent: number
+}

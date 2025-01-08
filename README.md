@@ -1,29 +1,8 @@
-# Tool Rental Application
+# Tool Rental Demo
 
-Hi Team, here is the application built with Nuxt 3, Vue 3, and TypeScript. This application allows users to rent tools, calculate rental charges, and manage rental agreements.
+Here is the Tool Rental app built with Nuxt 3 and Vue 3 and other libraries in the package.json. I intentionally opted to not use Nuxi, the CLI for Nuxt, as I wanted to keep the project simple and focused on the core functionality, adhering to the requirements, and demonstate my ability do the scaffolding and tesing that Nuxi provides myself. In the end Testing was more problematic than I expected, but I was able to get all of the required tests to pass. The test with the 6 required tests is 'rental-scenarios.spec.ts' and is located in the 'tests' folder.
 
-## 🛠 Tech Stack
-
-### Core Technologies
-- **Framework**: Nuxt 3.15.0 (front and backends [built-in nitro server])
-- **UI Library**: Vue 3 (latest)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS with Forms plugin
-- **Date Picker**: @vuepic/vue-datepicker 10.0.0
-- **Node.js**: v20.18.1 (required)
-
-### Development Tools
-- **Package Manager**: pnpm 9.15.1
-- **Testing Frameworks**: 
-  - Vitest 1.3.1 (Unit/Integration)
-  - Playwright 1.49.1 (E2E)
-- **Test Utilities**:
-  - @vue/test-utils 2.4.6
-  - @nuxt/test-utils 3.15.1
-  - happy-dom 15.2.0 (Test environment)
-  - jsdom 25.0.1 (Test environment)
-
-## 📦 Installation
+## 🚀 Quick Start
 
 ```bash
 # Install dependencies
@@ -32,38 +11,37 @@ pnpm install
 # Start development server
 pnpm dev
 
-# Build for production
-pnpm build
-
 # Run tests
 pnpm test
 ```
 
-## 🧪 Testing Status
+## 🛠 Tech Stack
 
-### Test Coverage
-- Total Tests: 14 across 7 test files
-- Passing: 10 tests
-- Failing: 4 tests
+### Core
+- **Framework**: Nuxt 3.15.0 (includes Nitro server)
+- **UI**: Vue 3 with TypeScript
+- **Styling**: Tailwind CSS + Forms plugin
+- **Date Handling**: @vuepic/vue-datepicker 10.0.0
 
-### Passing Tests
-1. `rental-calculator.nuxt.spec.ts` (2/2 passing)
-2. `RentalResults.nuxt.spec.ts` (2/2 passing)
-3. `RentalCalculator.nuxt.spec.ts` (2/2 passing)
-4. `RentalResults.spec.ts` (2/2 passing)
-5. "should fetch tools on mount" tests in both RentalForm test files (2/2 passing)
+### Development
+- **Node.js**: v20.18.1 (**required**)
+- **Package Manager**: pnpm 9.15.1 (**required**)
 
-### Known Issues
-1. **RentalForm Component Tests** (4 failing tests)
-   - Form submission event not being emitted correctly
-   - Validation error messages not displaying as expected
-   - Root cause: Issues with v-model binding and form state management in test environment
+### Testing
+- **Unit/Integration**: Vitest 1.3.1
+- **E2E**: Playwright 1.49.1 (not working)
+- **Utilities**: 
+  - @vue/test-utils 2.4.6
+  - @nuxt/test-utils 3.15.1
+  - happy-dom 15.2.0
+  - jsdom 25.0.1
 
-2. **E2E Tests**
-   - Playwright test configuration needs separate setup
-   - Currently throwing configuration errors when run with Vitest
+## 📊 Test Status
 
-## 🔍 Troubleshooting
+### Coverage
+- **Total Tests**: 7 (2 files)
+- **Passing**: 7
+- **Failing**: 0
 
 ### Common Issues
 
@@ -73,56 +51,42 @@ pnpm test
    ```
    Solution: Run `pnpm install` to ensure all dependencies are installed
 
-2. **Test Environment Errors**
-   ```
-   Error: You cannot use --inspect-brk without "--no-file-parallelism"
-   ```
-   Solution: Add `--no-file-parallelism` flag when debugging tests
+2. E2E Tests
+   - Playwright configuration needs setup
+   - Configuration conflicts with Vitest
 
-3. **Playwright Configuration Error**
-   ```
-   Error: Playwright Test did not expect test() to be called here
-   ```
-   Solution: Run E2E tests separately using `npx playwright test`
+## 📁 Project Structure
 
-### Performance Monitoring
+```
+app/
+├── components/     # Vue components
+├── composables/    # Shared composables
+├── pages/         # Application routes
+├── server/        # API endpoints
+├── tests/         # Test files
+├── types/         # TypeScript types
+└── utils/         # Utility functions
+```
 
-- Development server typically starts in < 2s
-- Test suite execution time: ~1.6s
+## 🔧 Development
+
+### Performance Metrics
+- Dev server start: < 2s
+- Test suite execution: ~1.6s
   - Transform: 815ms
   - Collection: 1.52s
   - Test execution: 232ms
   - Environment setup: 1.39s
   - Preparation: 321ms
 
-## 📋 Project Structure
+### Common Issues
 
-```
-app/
-├── components/          # Vue components
-├── composables/         # Shared composable functions
-├── pages/              # Application routes
-├── server/             # API endpoints
-├── tests/              # Test files
-│   ├── components/     # Component tests
-│   └── e2e/           # End-to-end tests
-├── types/              # TypeScript type definitions
-└── utils/              # Utility functions
-```
+1. **Module Resolution**
+   ```
+   Error: Cannot find module '@nuxt/test-utils'
+   ```
+   Solution: Run `pnpm install`
 
-## 🤔 FAQ
-
-**Q: Why are some RentalForm tests failing?**
-A: The tests are failing due to challenges with v-model binding and form state management in the test environment. The component works correctly in the application, but the test setup needs refinement.
-
-**Q: How do I run E2E tests?**
-A: E2E tests should be run separately using Playwright:
-```bash
-npx playwright test
-```
-
-**Q: Why are there duplicate test files (.spec.ts and .nuxt.spec.ts)?**
-A: The .nuxt.spec.ts files are specifically for testing Nuxt-specific functionality, while .spec.ts files are for general component testing.
 
 ## 🔄 Development Workflow
 
@@ -136,34 +100,16 @@ A: The .nuxt.spec.ts files are specifically for testing Nuxt-specific functional
    pnpm test
    ```
 
-3. Build for production:
-   ```bash
-   pnpm build
-   pnpm preview
-   ```
 
-## 📈 Performance Considerations
 
-- The application uses Tailwind's JIT compiler for optimal CSS bundle size
-- Vue components are automatically tree-shaken in production builds
-- API routes are automatically code-split and lazy-loaded
-- Test files are excluded from production builds
+MIT License
 
-## 🔒 Environment Setup
+## 🔍 Environment Setup
 
-Required environment variables:
+Required variables:
 ```env
 NODE_ENV=development
 PORT=3000
-```
+``` 
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch
-3. Run tests and ensure they pass
-4. Submit a pull request
-
-## 📝 License
-
-MIT License - see LICENSE file for details 
+Should any issues arise, please contact me at my email with Dave. 

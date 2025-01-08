@@ -6,8 +6,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'POS Tool Rental - MK'
-    },
-    port: 3000
+    }
   },
   srcDir: 'app',
   components: {
@@ -26,17 +25,9 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss'
   ],
-  nitro: {
-    port: 3000,
-    strictPort: true
-  },
   vite: {
-    server: {
-      port: 3000,
-      strictPort: true
-    },
     optimizeDeps: {
       exclude: ['vue-demi']
     }
-  }
+  },
 })

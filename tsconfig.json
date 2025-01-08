@@ -6,5 +6,17 @@
       "~/*": ["./app/*"],
       "#app/*": ["./app/*"]
     }
-  }
+  },
+  "include": [
+    "app/**/*"
+  ],
+  "exclude": [
+    "**/node_modules/**",
+    "**/node_modules/.pnpm/**",
+    ".nuxt/node_modules/**",
+    "./node_modules/**",
+    "node_modules",
+    "dist",
+    ".output"
+  ]
 }
