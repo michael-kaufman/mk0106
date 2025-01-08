@@ -1,3 +1,7 @@
+/**
+ * DateInput component
+ * Provides a date picker with consistent styling
+ */
 <template>
   <div>
     <Label v-if="label">{{ label }}</Label>

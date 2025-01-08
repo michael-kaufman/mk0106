@@ -1,3 +1,7 @@
+/**
+ * NumberInput component
+ * Provides a number input with increment/decrement buttons
+ */
 <template>
   <div class="relative">
     <input
